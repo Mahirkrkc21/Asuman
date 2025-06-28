@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Üye Girişi</title>
+  <style>
+    body {
+      background: linear-gradient(-45deg, #ffd6e8, #e0bbff, #d6f0ff, #ffe1e1);
+      background-size: 600% 600%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .float-emoji::before {
+      content: attr(data-emoji);
+      position: fixed;
+      top: 100%;
+      font-size: 40px;
+      opacity: 0.7;
+      animation: floatUp 12s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-50vh) scale(1.2); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1); opacity: 0; }
+    }
+
+    .float-emoji:nth-child(1)::before { left: 5%; animation-delay: 0s; }
+    .float-emoji:nth-child(2)::before { left: 15%; animation-delay: 1s; }
+    .float-emoji:nth-child(3)::before { left: 25%; animation-delay: 2s; }
+    .float-emoji:nth-child(4)::before { left: 35%; animation-delay: 3s; }
+    .float-emoji:nth-child(5)::before { left: 45%; animation-delay: 4s; }
+    .float-emoji:nth-child(6)::before { left: 55%; animation-delay: 5s; }
+    .float-emoji:nth-child(7)::before { left: 65%; animation-delay: 6s; }
+    .float-emoji:nth-child(8)::before { left: 75%; animation-delay: 7s; }
+    .float-emoji:nth-child(9)::before { left: 85%; animation-delay: 8s; }
+    .float-emoji:nth-child(10)::before { left: 50%; animation-delay: 9s; }
+    .float-emoji:nth-child(11)::before { left: 30%; animation-delay: 10s; }
+
+    .login-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 30px;
+      padding: 40px 20px;
+      width: 90%;
+      max-width: 450px;
+      margin: 60px auto;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+      border: 1px solid #f5a6c4;
+      animation: fadeIn 2s ease-out forwards;
+      opacity: 0;
+      z-index: 1;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #d6336c;
+      font-weight: 700;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 32px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border: 1px solid #f9a6c4;
+      border-radius: 10px;
+      font-size: 18px;
+      box-shadow: inset 0 1px 3px rgba(255, 182, 193, 0.5);
+    }
+
+    button {
+      background-color: #d6336c;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 20px;
+      font-weight: 600;
+      box-shadow: 0 8px 16px rgba(214, 51, 108, 0.5);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #b52a5b;
+    }
+
+    .music-btn {
+      margin-top: 20px;
+      background-color: #f17cb0;
+      box-shadow: 0 4px 8px rgba(241, 124, 176, 0.5);
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 26px; }
+      input, select { font-size: 16px; }
+      button { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Emoji Animasyonları -->
+  <div class="float-emoji" data-emoji="💖"></div>
+  <div class="float-emoji" data-emoji="🌸"></div>
+  <div class="float-emoji" data-emoji="🦋"></div>
+  <div class="float-emoji" data-emoji="✨"></div>
+  <div class="float-emoji" data-emoji="💫"></div>
+  <div class="float-emoji" data-emoji="🌈"></div>
+  <div class="float-emoji" data-emoji="💎"></div>
+  <div class="float-emoji" data-emoji="🤍"></div>
+  <div class="float-emoji" data-emoji="🎀"></div>
+  <div class="float-emoji" data-emoji="🧸"></div>
+  <div class="float-emoji" data-emoji="🫶"></div>
+
+  <div class="login-box">
+    <h1>Üye Girişi</h1>
+    <input type="text" id="username" placeholder="Kullanıcı Adı" />
+    <input type="password" id="password" placeholder="Şifre" />
+    <select id="role">
+      <option value="magaza">Üye Girişi</option>
+      <option value="yetkili">Yetkili</option>
+    </select>
+    <button onclick="login()">Giriş Yap</button>
+    <button class="music-btn" onclick="document.getElementById('bgMusic').play()">🎵 Müziği Başlat</button>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="audio/10_unutamam_seni.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const magazaUser = "_asumanmustafa072021";
+    const magazaPass = "UçarKarakoc.00";
+
+    const yetkiliUser = "_mustafakrkc";
+    const yetkiliPass = "Karakoc.99";
+
+    function login() {
+      const u = document.getElementById("username").value.trim();
+      const p = document.getElementById("password").value.trim();
+      const role = document.getElementById("role").value;
+
+      if (role === "magaza") {
+        if (u === magazaUser && p === magazaPass) {
+          openWelcomePage("Asuman’ım");
+        } else {
+          alert("Hatalı kullanıcı adı veya şifre!");
+        }
+      } else if (role === "yetkili") {
+        if (u === yetkiliUser && p === yetkiliPass) {
+          openWelcomePage("Mustafa", true);
+        } else {
+          alert("Hatalı kullanıcı adı veya şifre!");
+        }
+      }
+    }
+
+    function openWelcomePage(name, isYetkili = false) {
+      let loginCountText = '';
+      let lastLoginText = '';
+
+      if (isYetkili) {
+        let count = localStorage.getItem('yetkiliLoginCount');
+        count = count ? parseInt(count) + 1 : 1;
+        localStorage.setItem('yetkiliLoginCount', count);
+
+        const now = new Date();
+        const lastLogin = now.toLocaleString();
+        localStorage.setItem('yetkiliLastLogin', lastLogin);
+
+        loginCountText = `<p>Giriş Sayısı: ${count}</p>`;
+        lastLoginText = `<p>Son Giriş: ${lastLogin}</p>`;
+      }
+
+      const newWin = window.open("", "_blank", "width=1000,height=800,scrollbars=yes");
+      newWin.document.write(`
+        <html lang="tr">
+        <head>
+          <meta charset="UTF-8" />
+          <title>Hoşgeldin</title>
+          <style>
+            body {
+              background: linear-gradient(to right, #f8bbd0, #fce4ec);
+              font-family: 'Segoe UI', sans-serif;
+              text-align: center;
+              padding: 20px;
+              color: #6a1b4d;
+            }
+            h1 {
+              color: #ad1457;
+              font-family: 'Brush Script MT', cursive;
+              font-weight: 700;
+              font-size: 30px;
+            }
+            .gallery {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 10px;
+              margin-top: 20px;
+            }
+            .gallery img {
+              width: 45vw;
+              max-width: 200px;
+              border-radius: 15px;
+              box-shadow: 0 4px 10px rgba(173, 20, 87, 0.3);
+              transition: transform 0.3s ease;
+            }
+            .gallery img:hover {
+              transform: scale(1.05);
+              box-shadow: 0 6px 14px rgba(173, 20, 87, 0.5);
+            }
+            p {
+              font-style: italic;
+              margin-top: 15px;
+              font-size: 1.2em;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Hoşgeldin ${name}</h1>
+          ${loginCountText}
+          ${lastLoginText}
+          <div class="gallery">
+            ${[...Array(12)].map((_, i) => `<img src="images/photo${i+1}.jpg" alt="Fotoğraf ${i+1}" />`).join('')}
+          </div>
+          <p>“Seninle geçen her an, kalbimin en özel köşesinde yer alıyor.”</p>
+        </body>
+        </html>
+      `);
+      newWin.document.close();
+    }
+  </script>
+</body>
+</html>
